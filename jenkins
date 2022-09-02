@@ -1,0 +1,13 @@
+node('master'){
+stage('git ') {
+   sh "git config --global  user.name agiratech-poovarasan"
+   sh "git config --global  user.email poovarasan.p@agiratech.com"
+   sh "git clone https://github.com/agiratech-poovarasan/jenkins.git"
+}
+stage('k8s deploy') {
+    sh "cp -r /home/ubuntu/workspace/k8s/jenkins /home/ "
+    sh '''cd /home/jenkins
+          kubectl create -f deployment.yml 
+          kubectl create -f service.yml '''
+}
+}
