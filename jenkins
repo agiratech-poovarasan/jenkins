@@ -7,7 +7,7 @@ stage('git ') {
 stage('k8s deploy') {
     sh "cp -r /home/ubuntu/workspace/k8s/jenkins /home/ "
     sh '''cd /home/jenkins
-          kubectl create -f deployment.yml 
-          kubectl create -f service.yml '''
+          kubectl create -f deployment.yaml 
+          kubectl create -f service.yaml '''
 }
 }
